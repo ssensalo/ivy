@@ -4,6 +4,10 @@ eigh
 .. autofunction:: ivy.functional.ivy.linear_algebra.eigh
 
 .. autofunction:: ivy.array.array_methods.eigh
+
+.. autofunction:: ivy.container.container_methods.static_eigh
+
+.. autofunction:: ivy.container.container_methods.eigh
 |
 | **Supported Frameworks:**
 
@@ -32,4 +36,6 @@ eigh
 
    eigh/eigh_functional.rst
    eigh/eigh_array.rst
+   eigh/eigh_container.rst
+   eigh/static_eigh_container.rst
 

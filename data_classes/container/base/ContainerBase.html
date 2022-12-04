@@ -21,7 +21,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Container" href="../container.html" />
+    <link rel="next" title="Conversions" href="../conversions.html" />
     <link rel="prev" title="Base" href="../base.html" /> 
 </head>
 
@@ -44,11 +44,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../background.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../related_work.html">Related Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../extensions.html">Extensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../deep_dive.html">Deep Dive</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Functions</span></p>
 <ul>
@@ -59,6 +60,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../functional/ivy/data_type.html">Data type</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../functional/ivy/device.html">Device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../functional/ivy/elementwise.html">Elementwise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../functional/ivy/experimental.html">Experimental</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../functional/ivy/general.html">General</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../functional/ivy/gradients.html">Gradients</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../functional/ivy/layers.html">Layers</a></li>
@@ -83,11 +85,12 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ContainerBase</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../container.html">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../conversions.html">Conversions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../creation.html">Creation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data_type.html">Data type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../elementwise.html">Elementwise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../experimental.html">Experimental</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gradients.html">Gradients</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../image.html">Image</a></li>
@@ -109,14 +112,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Framework Classes</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../stateful/layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stateful/module.html">Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../stateful/converters.html">Converters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../stateful/activations.html">Activations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../stateful/layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stateful/initializers.html">Initializers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stateful/norms.html">Norms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../stateful/optimizers.html">Optimizers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../stateful/sequential.html">Sequential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../stateful/norms.html">Norms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../stateful/initializers.html">Initializers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../stateful/module.html">Module</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Docs</span></p>
 <ul>
@@ -184,35 +187,35 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dict_in</strong> – the dictionary the container should wrap around. Default is None.</p></li>
+<li><p><strong>dict_in</strong> – the dictionary the container should wrap around. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>queues</strong> – Sequence of multiprocessing queues, each of which returns containers.
 This enables the current container to be passed around asynchronously while
-waiting for data. Default is None.</p></li>
+waiting for data. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>queue_load_sizes</strong> – Size of leading dimension of the containers returned by each queue.
-Default is None.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>container_combine_method</strong> – The method to use for combining containers arriving from different queues.
 Default is ivy.Container.list_join</p></li>
 <li><p><strong>queue_timeout</strong> – The timeout when waiting for containers to arrive from the queues.
 Default is global.</p></li>
 <li><p><strong>print_limit</strong> – The total array size limit when printing the container. Default is 10.</p></li>
-<li><p><strong>key_length_limit</strong> – The maximum key length when printing the container. Default is None.</p></li>
+<li><p><strong>key_length_limit</strong> – The maximum key length when printing the container. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>print_indent</strong> – The number of whitespaces to use for indenting when printing the container.
 Default is 4.</p></li>
 <li><p><strong>print_line_spacing</strong> – The number of extra newlines to use between keys when printing the
-container. Default is 0.</p></li>
-<li><p><strong>ivyh</strong> – Handle to ivy module to use for the calculations. Default is None, which
+container. Default is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>ivyh</strong> – Handle to ivy module to use for the calculations. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, which
 results in the global ivy.</p></li>
 <li><p><strong>default_key_color</strong> – The default key color for printing the container to the terminal.
 Default is ‘green’.</p></li>
 <li><p><strong>keyword_color_dict</strong> – A dict mapping keywords to their termcolor color codes for printing the
 container. (Default value = None)</p></li>
 <li><p><strong>rebuild_child_containers</strong> – Whether to rebuild container found in dict_in with these constructor params.
-Default is False, in which case the original container are kept as are.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>, in which case the original container are kept as are.</p></li>
 <li><p><strong>types_to_iteratively_nest</strong> – The data types to nest iteratively in the dict structure, each type must be
-iterable. Default is None.</p></li>
+iterable. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>alphabetical_keys</strong> – Whether to sort the container keys alphabetically, or preserve the dict
-order. Default is True.</p></li>
-<li><p><strong>kwargs</strong> – keyword arguments for dict creation. Default is None.</p></li>
+order. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>kwargs</strong> – keyword arguments for dict creation. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -246,12 +249,13 @@ order. Default is True.</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>assert_is_bool</strong> – Whether or not to assert each entry is of type Boolean.
 (Default value = False)</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
+will be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples).
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -279,60 +283,17 @@ Default is False.</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>assert_is_bool</strong> – Whether or not to assert each entry is of type Boolean.
 (Default value = False)</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
+will be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples).
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><em>Boolean, whether all entries are boolean True.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.arrays_as_lists">
-<span class="sig-name descname"><span class="pre">arrays_as_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.arrays_as_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.arrays_as_lists" title="Permalink to this definition"></a></dt>
-<dd><p>Converts all nested arrays to lists, a useful intermediate step for
-conversion to other framework array types.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>container with each array converted to a list.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.as_arrays">
-<span class="sig-name descname"><span class="pre">as_arrays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.as_arrays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.as_arrays" title="Permalink to this definition"></a></dt>
-<dd><p>Converts all nested variables to arrays, which do not support gradient
-computation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>container with each variable converted to an array.</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -346,105 +307,17 @@ is False.</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>assert_is_bool</strong> – Whether or not to assert the entry is of type Boolean.
 (Default value = False)</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
+will be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples).
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><em>Container object with all entries boolean evaluated.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.as_ones">
-<span class="sig-name descname"><span class="pre">as_ones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.as_ones"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.as_ones" title="Permalink to this definition"></a></dt>
-<dd><p>Return arrays of ones for all nested arrays in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with all sub-arrays filled with ones.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.as_random_uniform">
-<span class="sig-name descname"><span class="pre">as_random_uniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.as_random_uniform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.as_random_uniform" title="Permalink to this definition"></a></dt>
-<dd><p>Return arrays of random uniform values for all nested arrays in the
-container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>low</strong> – Lower boundary of the output interval. All values generated will be greater
-than or equal to low. The default value is 0.</p></li>
-<li><p><strong>high</strong> – Upper boundary of the output interval. All values generated will be less
-than high. The default value is 1.0.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with all sub-arrays filled with random uniform values.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.as_variables">
-<span class="sig-name descname"><span class="pre">as_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.as_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.as_variables" title="Permalink to this definition"></a></dt>
-<dd><p>Converts all nested arrays to variables, which support gradient computation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>container with each array converted to a variable.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.as_zeros">
-<span class="sig-name descname"><span class="pre">as_zeros</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.as_zeros"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.as_zeros" title="Permalink to this definition"></a></dt>
-<dd><p>Return arrays of zeros for all nested arrays in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with all sub-arrays filled with zeros.</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -459,7 +332,7 @@ exception raised with the diff printed to screen.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sub_cont</strong> – The sub-container to check.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -474,9 +347,9 @@ otherwise exception raised with the diff printed to screen.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sub_cont</strong> – The sub-container to check.</p></li>
-<li><p><strong>check_shapes</strong> – Whether to check array shapes in the sub-structure. Default is True.</p></li>
+<li><p><strong>check_shapes</strong> – Whether to check array shapes in the sub-structure. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -492,17 +365,17 @@ shown in an exception.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>containers</strong> – containers to check.</p></li>
 <li><p><strong>check_types</strong> – Whether to check if the datatypes of the leaf nodes are the same.
-Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>check_shapes</strong> – Whether to check if the shapes of the leaf nodes are the same.
-Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>same_arrays</strong> – Whether to check if the arrays are the exact same instances.
-Default is True.</p></li>
-<li><p><strong>arrays_equal</strong> – Whether to check if the arrays have equal values. Default is True.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>arrays_equal</strong> – Whether to check if the arrays have equal values. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
+will be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -518,14 +391,14 @@ diff is shown in an exception.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>containers</strong> – containers to check.</p></li>
 <li><p><strong>check_types</strong> – Whether to also check whether the datatypes of the leaf nodes are the same.
-Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>check_shapes</strong> – Whether to also check whether the shapes of the leaf nodes are the same.
-Default is True.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
+will be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -575,39 +448,15 @@ dict.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>queries</strong> – The keys to query.</p></li>
-<li><p><strong>ignore_none</strong> – Whether to ignore None input. Default is True.</p></li>
+<li><p><strong>ignore_none</strong> – Whether to ignore None input. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>containing</strong> – Whether to include keys which only contain the query substrings.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>ignore_key_errors</strong> – Whether to ignore Key-errors when trying to access the dict.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><em>sub-container containing only key-chains containing the specified keys.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.clip">
-<span class="sig-name descname"><span class="pre">clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.clip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.clip" title="Permalink to this definition"></a></dt>
-<dd><p>Computes the elementwise clipped values between this container and clip_min
-and clip_max containers or numbers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x_min</strong> – The minimum container or number to clip against.</p></li>
-<li><p><strong>x_max</strong> – The maximum container or number to clip against.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with all sub-arrays having the clipped values returned.</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -651,6 +500,24 @@ container_rightmost.</p></li>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.cont_inplace_update">
+<span class="sig-name descname"><span class="pre">cont_inplace_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_in</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.cont_inplace_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.cont_inplace_update" title="Permalink to this definition"></a></dt>
+<dd><p>Update the contents of this container inplace, using either a new dict or
+container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dict_in</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>]) – New dict or container to update the current container inplace with.</p></li>
+<li><p><strong>**config</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.contains_sub_container">
 <span class="sig-name descname"><span class="pre">contains_sub_container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_cont</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.contains_sub_container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.contains_sub_container" title="Permalink to this definition"></a></dt>
 <dd><p>Determine whether the current container contains the sub-container, with
@@ -660,7 +527,7 @@ matching structure and array values.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sub_cont</strong> – The sub-container to check.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -677,9 +544,9 @@ Default is False.</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sub_cont</strong> – The sub-container to check.</p></li>
-<li><p><strong>check_shapes</strong> – Whether to check array shapes in the sub-structure. Default is True.</p></li>
+<li><p><strong>check_shapes</strong> – Whether to check array shapes in the sub-structure. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -754,38 +621,6 @@ present. otherwise, do nothing.</p>
 the devices are not consistent.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.dev_clone">
-<span class="sig-name descname"><span class="pre">dev_clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">devices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.dev_clone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.dev_clone" title="Permalink to this definition"></a></dt>
-<dd><p>Clone the current container across multiple devices.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>devs</strong> – The devices on which to clone the container.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>a set of cloned containers across the specified devices.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.dev_dist">
-<span class="sig-name descname"><span class="pre">dev_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">devices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.dev_dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.dev_dist" title="Permalink to this definition"></a></dt>
-<dd><p>Distribute the current container across multiple devices.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>devs</strong> – The devices along which to distribute the container.</p></li>
-<li><p><strong>axis</strong> – The axis along which to split the arrays at the container leaves.
-Default is 0.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>a set of distributed sub-containers across the specified devices.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.dev_str">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dev_str</span></span><a class="headerlink" href="#ivy.container.base.ContainerBase.dev_str" title="Permalink to this definition"></a></dt>
@@ -807,13 +642,14 @@ where they are different.</p>
 only those that are consist across the containers, or only the differences.
 Default is all.</p></li>
 <li><p><strong>diff_keys</strong> – The key/keys to add to the returned container when differences are found.
-Default is “diff”.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">&quot;diff&quot;</span></code>.</p></li>
 <li><p><strong>detect_key_diffs</strong> – Whether to treat different keys as detected differences. If not, the keys
 among the input containers are simply combined without flagging differences.
-Default is True.</p></li>
-<li><p><strong>detect_value_diffs</strong> – Whether to treat different values as detected differences. Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>detect_value_diffs</strong> – Whether to treat different values as detected differences.
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>detect_shape_diffs</strong> – Whether to treat different array shapes as detected differences.
-Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>config</strong> – The configuration for the containers. Default is the same as container0.</p></li>
 <li><p><strong>*containers</strong> – </p></li>
 </ul>
@@ -825,89 +661,9 @@ Default is True.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.dtype">
-<span class="sig-name descname"><span class="pre">dtype</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.dtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.dtype" title="Permalink to this definition"></a></dt>
-<dd><p>Summary.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><em>ret</em> – New datatype container</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.einops_rearrange">
-<span class="sig-name descname"><span class="pre">einops_rearrange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">axes_lengths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.einops_rearrange"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.einops_rearrange" title="Permalink to this definition"></a></dt>
-<dd><p>Perform einops rearrange operation on each sub array in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>pattern</strong> – Rearrangement pattern.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-<li><p><strong>axes_lengths</strong> – Any additional specifications for dimensions.</p></li>
-<li><p><strong>**axes_lengths</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>ivy.Container with each array having einops.rearrange applied.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.einops_reduce">
-<span class="sig-name descname"><span class="pre">einops_reduce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reduction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">axes_lengths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.einops_reduce"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.einops_reduce" title="Permalink to this definition"></a></dt>
-<dd><p>Perform einops reduce operation on each sub array in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>pattern</strong> – Reduction pattern.</p></li>
-<li><p><strong>reduction</strong> – One of available reductions (‘min’, ‘max’, ‘sum’, ‘mean’, ‘prod’), or
-callable.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-<li><p><strong>axes_lengths</strong> – Any additional specifications for dimensions.</p></li>
-<li><p><strong>**axes_lengths</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>ivy.Container with each array having einops.reduce applied.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.einops_repeat">
-<span class="sig-name descname"><span class="pre">einops_repeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">axes_lengths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.einops_repeat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.einops_repeat" title="Permalink to this definition"></a></dt>
-<dd><p>Perform einops repeat operation on each sub array in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>pattern</strong> – Rearrangement pattern.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-<li><p><strong>axes_lengths</strong> – Any additional specifications for dimensions.</p></li>
-<li><p><strong>**axes_lengths</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>ivy.Container with each array having einops.repeat applied.</em></p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.duplicate_array_keychains">
+<span class="sig-name descname"><span class="pre">duplicate_array_keychains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.duplicate_array_keychains"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.duplicate_array_keychains" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.find_sub_container">
@@ -918,7 +674,7 @@ is False.</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sub_cont_to_find</strong> – The sub-container to find.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -932,9 +688,9 @@ Default is False.</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sub_struc_to_find</strong> – The sub-container to find.</p></li>
-<li><p><strong>check_shapes</strong> – Whether to check array shapes in the sub-structure. Default is True.</p></li>
+<li><p><strong>check_shapes</strong> – Whether to check array shapes in the sub-structure. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -996,8 +752,8 @@ filepath.</p>
 <li><p><strong>h5_obj_or_filepath</strong> – Filepath where the container object is saved to disk, or h5 object.</p></li>
 <li><p><strong>slice_obj</strong> – slice object to slice all h5 elements. (Default value = slice(None))</p></li>
 <li><p><strong>alphabetical_keys</strong> – Whether to sort the container keys alphabetically, or preserve the dict
-order. Default is True.</p></li>
-<li><p><strong>ivyh</strong> – Handle to ivy module to use for the calculations. Default is None, which
+order. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>ivyh</strong> – Handle to ivy module to use for the calculations. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, which
 results in the global ivy.</p></li>
 </ul>
 </dd>
@@ -1016,7 +772,7 @@ objects were not json-able during saving, then they will be loaded as strings.</
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>json_filepath</strong> – Filepath where the container object is saved to disk.</p></li>
-<li><p><strong>ivyh</strong> – Handle to ivy module to use for the calculations. Default is None, which
+<li><p><strong>ivyh</strong> – Handle to ivy module to use for the calculations. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, which
 results in the global ivy.</p></li>
 </ul>
 </dd>
@@ -1034,7 +790,7 @@ results in the global ivy.</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pickle_filepath</strong> – Filepath where the container object is saved to disk.</p></li>
-<li><p><strong>ivyh</strong> – Handle to ivy module to use for the calculations. Default is None, which
+<li><p><strong>ivyh</strong> – Handle to ivy module to use for the calculations. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>, which
 results in the global ivy.</p></li>
 </ul>
 </dd>
@@ -1055,73 +811,6 @@ from flat list.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><em>Container.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.from_numpy">
-<span class="sig-name descname"><span class="pre">from_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.from_numpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.from_numpy" title="Permalink to this definition"></a></dt>
-<dd><p>Converts all nested numpy arrays to native backend arrays.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>container with each ivy array converted to a numpy array.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.gather">
-<span class="sig-name descname"><span class="pre">gather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.gather"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.gather" title="Permalink to this definition"></a></dt>
-<dd><p>Gather slices from all container params at axis according to indices.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>indices</strong> – Index array.</p></li>
-<li><p><strong>axis</strong> – The axis from which to gather from. Default is -1.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with all sub-array dimensions gathered along the axis.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.gather_nd">
-<span class="sig-name descname"><span class="pre">gather_nd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.gather_nd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.gather_nd" title="Permalink to this definition"></a></dt>
-<dd><p>Gather slices from all container params into a arrays with shape specified by
-indices.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>indices</strong> – Index array.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with all sub-array dimensions gathered.</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1189,30 +878,6 @@ structure.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.has_nans">
-<span class="sig-name descname"><span class="pre">has_nans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_infs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leafwise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.has_nans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.has_nans" title="Permalink to this definition"></a></dt>
-<dd><p>Determine whether arrays in the container contain any nans, as well as infs
-or -infs if specified.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>include_infs</strong> – Whether to include infs and -infs in the check. Default is True.</p></li>
-<li><p><strong>leafwise</strong> – Whether to apply the check leaf-wise, and return a container of booleans.
-Default is False, in which case the check is applied across the entire
-container, returning a single boolean.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>Whether the container has any nans, applied either leafwise or across the</em></p></li>
-<li><p><em>entire container.</em></p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.identical">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">identical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">containers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_shapes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">same_arrays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrays_equal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.identical"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.identical" title="Permalink to this definition"></a></dt>
 <dd><p>Returns a single boolean as to whether the input containers have identical
@@ -1222,17 +887,17 @@ key-chains and data types.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>containers</strong> – containers to check.</p></li>
 <li><p><strong>check_types</strong> – Whether to check if the datatypes of the leaf nodes are the same.
-Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>check_shapes</strong> – Whether to check if the shapes of the leaf nodes are the same.
-Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>same_arrays</strong> – Whether to check if the arrays are the exact same instances.
-Default is True.</p></li>
-<li><p><strong>arrays_equal</strong> – Whether to check if the arrays have equal values. Default is True.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>arrays_equal</strong> – Whether to check if the arrays have equal values. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
+be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>key_chain</strong> – Chain of keys for this dict entry (Default value = ‘’)</p></li>
 </ul>
 </dd>
@@ -1283,14 +948,14 @@ structure.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>containers</strong> – containers to check.</p></li>
 <li><p><strong>check_types</strong> – Whether to also check whether the datatypes of the leaf nodes are the same.
-Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>check_shapes</strong> – Whether to also check whether the shapes of the leaf nodes are the same.
-Default is True.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
+will be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>partial</strong> – Whether to also check for partially complete sub-containers.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>key_chain</strong> – Chain of keys for this dict entry (Default value = ‘’)</p></li>
 </ul>
 </dd>
@@ -1307,24 +972,6 @@ Default is False.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>key</strong> – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.inplace_update">
-<span class="sig-name descname"><span class="pre">inplace_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dict_in</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.inplace_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.inplace_update" title="Permalink to this definition"></a></dt>
-<dd><p>Update the contents of this container inplace, using either a new dict or
-container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dict_in</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="../../container.html#module-ivy.Container" title="ivy.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>]) – New dict or container to update the current container inplace with.</p></li>
-<li><p><strong>**config</strong> – </p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="../../container.html#module-ivy.Container" title="ivy.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1390,15 +1037,16 @@ container.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>func</strong> – Function to apply to each container entry</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
+will be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples).
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>inplace</strong> – Whether to apply the mapping inplace, or return a new container.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map to sequences (lists and tuples). Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>map_sequences</strong> – Whether to also map to sequences (lists and tuples). Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>key_chain</strong> – Chain of keys for this dict entry (Default value = ‘’)</p></li>
 </ul>
 </dd>
@@ -1416,16 +1064,16 @@ Default is False.</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>func</strong> – Function to apply to each sub-container</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
+will be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>inplace</strong> – Whether to apply the mapping inplace, or return a new container.
-Default is False.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>key_chain</strong> – Chain of keys for this dict entry (Default value = ‘’)</p></li>
 <li><p><strong>include_self</strong> – Whether to also apply the (possiby in-place) function to this container.
-Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1434,85 +1082,10 @@ Default is True.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.matrix_norm">
-<span class="sig-name descname"><span class="pre">matrix_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.matrix_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.matrix_norm" title="Permalink to this definition"></a></dt>
-<dd><p>Compute matrix p-norm for each array in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>p</strong> – Order of the norm. Default is 2.</p></li>
-<li><p><strong>axis</strong> – If axis is an integer, it specifies the axis of x along which to compute the
-matrix norms. Default is None, in which case the flattened array is
-considered.</p></li>
-<li><p><strong>keepdims</strong> – If this is set to True, the axes which are normed over are left in the
-result as dimensions with size one. With this option the result will
-broadcast correctly against the original x. Default is False.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-<li><p><strong>ord</strong> – Default value = 2)</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with the matrix norms for each sub-array returned.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.max_depth">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_depth</span></span><a class="headerlink" href="#ivy.container.base.ContainerBase.max_depth" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.maximum">
-<span class="sig-name descname"><span class="pre">maximum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.maximum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.maximum" title="Permalink to this definition"></a></dt>
-<dd><p>Computes the elementwise maximum between this container and another container
-or number.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>other</strong> – The other container or number to compute the maximum against.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with all sub-arrays having the maximum values computed.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.minimum">
-<span class="sig-name descname"><span class="pre">minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.minimum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.minimum" title="Permalink to this definition"></a></dt>
-<dd><p>Computes the elementwise minimum between this container and another container
-or number.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x2</strong> – The other container or number to compute the minimum against.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with all sub-arrays having the minimum values computed.</em></p>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.multi_map">
@@ -1524,14 +1097,15 @@ structured containers.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>func</strong> – Function to apply to each container entry.</p></li>
 <li><p><strong>containers</strong> – containers to map.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
+be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied,
-otherwise the leftmost container value is used. Default is False.</p></li>
+otherwise the leftmost container value is used. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>key_chain</strong> – Chain of keys for this dict entry (Default value = ‘’)</p></li>
 <li><p><strong>config</strong> – The configuration for the containers. Default is the same as container0.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
+<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples).
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>assert_identical</strong> – Whether to assert that the input containers are identical or not.</p></li>
 </ul>
 </dd>
@@ -1546,7 +1120,7 @@ otherwise the leftmost container value is used. Default is False.</p></li>
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">multi_map_in_static_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.multi_map_in_static_method"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.multi_map_in_static_method" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="../../container.html#module-ivy.Container" title="ivy.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1783,8 +1357,8 @@ key-chains and values as new key-chains.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mapping</strong> – A dict with keys as old key-chains and values as new key-chains.</p></li>
 <li><p><strong>keep_orig</strong> – Whether to keep the original keys, are start from a new container.
-Default is True.</p></li>
-<li><p><strong>replace</strong> – Whether to replace the old key-chains by the new ones. Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>replace</strong> – Whether to replace the old key-chains by the new ones. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1800,8 +1374,8 @@ Given by the mapping with keys as old key-chains and values as new key-chains.</
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>keychain_mapping</strong> – A dict with keys as old key-chains and values as new key-chains.</p></li>
 <li><p><strong>keep_orig</strong> – Whether to keep the original keys, or start from a new empty container.
-Default is True.</p></li>
-<li><p><strong>replace</strong> – Whether to replace the old key-chains by the new ones. Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>replace</strong> – Whether to replace the old key-chains by the new ones. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1857,40 +1431,18 @@ Default is True.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.set_framework">
-<span class="sig-name descname"><span class="pre">set_framework</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ivyh</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.set_framework"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.set_framework" title="Permalink to this definition"></a></dt>
-<dd><p>Update the framework to use for the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ivyh</strong> – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.set_ivy_backend">
-<span class="sig-name descname"><span class="pre">set_ivy_backend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ivy_backend</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.set_ivy_backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.set_ivy_backend" title="Permalink to this definition"></a></dt>
-<dd><p>Summary.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ivy_backend</strong> – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.shape">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#ivy.container.base.ContainerBase.shape" title="Permalink to this definition"></a></dt>
-<dd><p>The shape of the arrays in the container, with None placed in indices which
-are not consistent across arrays.</p>
-</dd></dl>
-
 <dl class="py property">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.shapes">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shapes</span></span><a class="headerlink" href="#ivy.container.base.ContainerBase.shapes" title="Permalink to this definition"></a></dt>
 <dd><p>The shapes of each array in the container, with None placed in leaf entries
 without a shape attribute.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.shared_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shared_shape</span></span><a class="headerlink" href="#ivy.container.base.ContainerBase.shared_shape" title="Permalink to this definition"></a></dt>
+<dd><p>The shape of the arrays in the container, with None placed in indices which
+are not consistent across arrays.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1905,27 +1457,6 @@ without a shape attribute.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>sub_cont_or_keychain</strong> – </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.shuffle">
-<span class="sig-name descname"><span class="pre">shuffle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.shuffle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.shuffle" title="Permalink to this definition"></a></dt>
-<dd><p>Shuffle entries in all sub-arrays, such that they are still aligned along
-axis 0.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>seed_value</strong> – random seed to use for array shuffling (Default value = None)</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-<li><p><strong>key_chain</strong> – Chain of keys for this dict entry (Default value = ‘’)</p></li>
-</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1992,8 +1523,8 @@ rather than a variable or traced array. (Default value = False)</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.split">
-<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_or_size_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_remainder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.split" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.split_conts">
+<span class="sig-name descname"><span class="pre">split_conts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_or_size_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">with_remainder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.split_conts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.split_conts" title="Permalink to this definition"></a></dt>
 <dd><p>Splits a container into multiple sub-containers, by splitting their
 constituent arrays.</p>
 <dl class="field-list simple">
@@ -2002,43 +1533,20 @@ constituent arrays.</p>
 <li><p><strong>num_or_size_splits</strong> – Number of equal arrays to divide the array into along the given axis if an
 integer. The size of each split element if a sequence of integers. Default
 is to divide into as many 1-dimensional arrays as the axis dimension.</p></li>
-<li><p><strong>axis</strong> – The axis along which to split, default is 0.</p></li>
+<li><p><strong>axis</strong> – The axis along which to split, default is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
 <li><p><strong>with_remainder</strong> – If the tensor does not split evenly, then store the last remainder entry.
-Default is False.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
+be skipped. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
 is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
+<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples).
+Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><em>A list of sub-arrays.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.stop_gradients">
-<span class="sig-name descname"><span class="pre">stop_gradients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preserve_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.stop_gradients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.stop_gradients" title="Permalink to this definition"></a></dt>
-<dd><p>Stop gradients of all array entries in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>preserve_type</strong> – Whether to preserve the input type (ivy.Variable or ivy.Array),
-otherwise an array is always returned. Default is True.</p></li>
-<li><p><strong>preserve_type</strong> – bool, optional (Default value = True)</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>container with each array having their gradients stopped.</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2060,38 +1568,15 @@ Default is all.</p></li>
 Default is “diff”.</p></li>
 <li><p><strong>detect_key_diffs</strong> – Whether to treat different keys as detected differences.
 If not, the keys among the input containers are simply combined without
-flagging differences. Default is True.</p></li>
+flagging differences. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>detect_shape_diffs</strong> – Whether to treat different array shapes as detected differences.
-Default is True.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
 <li><p><strong>config</strong> – The configuration for the containers. Default is the same as container0.</p></li>
 <li><p><strong>*containers</strong> – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><em>Compared containers</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.to_device">
-<span class="sig-name descname"><span class="pre">to_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.to_device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.to_device" title="Permalink to this definition"></a></dt>
-<dd><p>Move the container arrays to the desired device, specified by device string.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dev</strong> – device to move the array to ‘cuda:0’, ‘cuda:1’, ‘cpu’ etc. Keep same device
-if None.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>The container, but with each sub-array now placed on the target device.</em></p>
 </dd>
 </dl>
 </dd></dl>
@@ -2207,34 +1692,6 @@ appending to file. (Default value = None)</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.to_ivy">
-<span class="sig-name descname"><span class="pre">to_ivy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.to_ivy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.to_ivy" title="Permalink to this definition"></a></dt>
-<dd><p>Return ivy arrays for all nested native framework arrays in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>nested</strong> – Whether to apply the conversion on arguments in a nested manner. If so, all
-dicts, lists and tuples will be traversed to their lowest leaves in search
-of ivy.Array and ivy.Variable instances. Default is False.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>Container object with all native sub-arrays converted to their ivy.Array</em></p></li>
-<li><p><em>instances.</em></p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.to_jsonable">
 <span class="sig-name descname"><span class="pre">to_jsonable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.to_jsonable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.to_jsonable" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
@@ -2245,80 +1702,9 @@ Default is False.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.to_list">
-<span class="sig-name descname"><span class="pre">to_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.to_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.to_list" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.to_nested_list">
+<span class="sig-name descname"><span class="pre">to_nested_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.to_nested_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.to_nested_list" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.to_multi_dev">
-<span class="sig-name descname"><span class="pre">to_multi_dev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">devices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.to_multi_dev"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.to_multi_dev" title="Permalink to this definition"></a></dt>
-<dd><p>Return a single MultiDevContainer, which shares the same structure as the
-current container, but replaces arrays at the leaves with DistributedArray
-instances.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>devs</strong> – The devices along which to distribute each array in the container.</p></li>
-<li><p><strong>axis</strong> – The axis along which to split the arrays at the container leaves.
-Default is 0.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>a MultiDevContainer instance, with all leafs arrays replaced by</em></p></li>
-<li><p><em>DistributedArray instances.</em></p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.to_native">
-<span class="sig-name descname"><span class="pre">to_native</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.to_native"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.to_native" title="Permalink to this definition"></a></dt>
-<dd><p>Return native framework arrays for all nested arrays in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>nested</strong> – Whether to apply the conversion on arguments in a nested manner. If so, all
-dicts, lists and tuples will be traversed to their lowest leaves in search
-of ivy.Array and ivy.Variable instances. Default is False.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with all sub-arrays converted to their native format.</em></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.to_numpy">
-<span class="sig-name descname"><span class="pre">to_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_backend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.to_numpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.to_numpy" title="Permalink to this definition"></a></dt>
-<dd><p>Converts all nested ivy arrays to numpy arrays.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains will
-be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied. Default
-is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-<li><p><strong>update_backend</strong> – Whether to update the ivy backend of the returned container to numpy.
-Default is True.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>container with each ivy array converted to a numpy array.</em></p>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.to_raw">
@@ -2326,7 +1712,7 @@ Default is True.</p></li>
 <dd><p>Constructor to their original form.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><em>ret</em> – Container data in it’s raw form.</p>
+<dd class="field-odd"><p><em>ret</em> – Container data in its raw form.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2334,12 +1720,13 @@ Default is True.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.trim_key">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">trim_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.trim_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.trim_key" title="Permalink to this definition"></a></dt>
-<dd><p>Summary.</p>
+<dd><p>Summary.
+Returns a trimmed key with a maximum length of max_length.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> – param max_length:</p></li>
-<li><p><strong>max_length</strong> – </p></li>
+<li><p><strong>key</strong> – key to trim</p></li>
+<li><p><strong>max_length</strong> – maximum length of key</p></li>
 </ul>
 </dd>
 </dl>
@@ -2368,7 +1755,7 @@ the specified device.</p>
 <li><p><strong>dev</strong> – The device to unify the containers to.</p></li>
 <li><p><strong>mode</strong> – The mode by which to unify, must be one of [ concat | mean | sum ]</p></li>
 <li><p><strong>axis</strong> – The axis along which to concattenate the container, if concat mode is set.
-Default is 0.</p></li>
+Default is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2378,14 +1765,14 @@ Default is 0.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.unstack">
-<span class="sig-name descname"><span class="pre">unstack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.unstack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.unstack" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.unstack_conts">
+<span class="sig-name descname"><span class="pre">unstack_conts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.unstack_conts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.unstack_conts" title="Permalink to this definition"></a></dt>
 <dd><p>Unstack containers along specified dimension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>axis</strong> – Dimensions along which to unstack.</p></li>
-<li><p><strong>keepdims</strong> – Whether to keep dimension 1 in the unstack dimensions. Default is False.</p></li>
+<li><p><strong>keepdims</strong> – Whether to keep dimension 1 in the unstack dimensions. Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
 <li><p><strong>dim_size</strong> – Size of the dimension to unstack. Determined from inputs by default.</p></li>
 </ul>
 </dd>
@@ -2399,36 +1786,6 @@ Default is 0.</p></li>
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.update_config">
 <span class="sig-name descname"><span class="pre">update_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.update_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.update_config" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="ivy.container.base.ContainerBase.vector_norm">
-<span class="sig-name descname"><span class="pre">vector_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_chains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prune_unapplied</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_sequences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.vector_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.vector_norm" title="Permalink to this definition"></a></dt>
-<dd><p>Compute vector p-norm for each array in the container.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ord</strong> – Order of the norm. Default is 2.</p></li>
-<li><p><strong>axis</strong> – If axis is an integer, it specifies the axis of x along which to compute the
-vector norms. Default is None, in which case the flattened array is
-considered.</p></li>
-<li><p><strong>keepdims</strong> – If this is set to True, the axes which are normed over are left in the
-result as dimensions with size one. With this option the result will
-broadcast correctly against the original x. Default is False.</p></li>
-<li><p><strong>global_norm</strong> – Whether to compute the norm across all the concattenated sub-arrays.
-Default is False.</p></li>
-<li><p><strong>key_chains</strong> – The key-chains to apply or not apply the method to. Default is None.</p></li>
-<li><p><strong>to_apply</strong> – If True, the method will be applied to key_chains, otherwise key_chains
-will be skipped. Default is True.</p></li>
-<li><p><strong>prune_unapplied</strong> – Whether to prune key_chains for which the function was not applied.
-Default is False.</p></li>
-<li><p><strong>map_sequences</strong> – Whether to also map method to sequences (lists, tuples). Default is False.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em>Container object with the vector norms for each sub-array returned.</em></p>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.with_default_key_color">
@@ -2451,11 +1808,15 @@ Default is False.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.container.base.ContainerBase.with_ivy_backend">
-<span class="sig-name descname"><span class="pre">with_ivy_backend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ivy_backend</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.with_ivy_backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.with_ivy_backend" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">with_ivy_backend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ivy_backend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/ivy/container/base.html#ContainerBase.with_ivy_backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.container.base.ContainerBase.with_ivy_backend" title="Permalink to this definition"></a></dt>
 <dd><p>Summary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ivy_backend</strong> – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self</strong> – input Container</p></li>
+<li><p><strong>ivy_backend</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – backend to use</p></li>
+<li><p><strong>inplace</strong> – whether to modify the container or return a copy</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -2530,13 +1891,13 @@ Default is False.</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../base.html" class="btn btn-neutral float-left" title="Base" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../container.html" class="btn btn-neutral float-right" title="Container" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../conversions.html" class="btn btn-neutral float-right" title="Conversions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Ivy Team.</p>
+    <p>&#169; Copyright 2020-2022, Ivy Team.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
